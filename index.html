@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabet farm - Atención Farmacéutica Especializada</title>
+    
+    <style>
+        /* Variables de color para mantener la consistencia del diseño */
+        :root {
+            --negro: #0a0e17;
+            --azul-tecnologico: #0284c7;
+            --azul-oscuro: #0f172a;
+            --blanco: #ffffff;
+            --gris-claro: #f8fafc;
+            --gris-borde: #e2e8f0;
+            --verde-neon: #10b981;
+            --texto-principal: #334155;
+        }
+
+        /* Reseteo básico de márgenes y tipografía */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-claro);
+            color: var(--texto-principal);
+            line-height: 1.6;
+        }
+
+        /* 1. ENCABEZADO Y NAVEGACIÓN */
+        header {
+            background-color: var(--negro);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--azul-tecnologico);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--verde-neon);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--verde-neon);
+        }
+
+        /* 2. SECCIÓN PRINCIPAL (HERO) */
+        .hero {
+            background: linear-gradient(135deg, var(--negro) 0%, var(--azul-oscuro) 100%);
+            color: var(--blanco);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--verde-neon);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--azul-tecnologico);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #94a3b8;
+        }
+
+        /* 3. TARJETAS DE SERVICIOS */
+        .services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--negro);
+            margin-bottom: 2.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid var(--gris-borde);
+            border-top: 4px solid var(--azul-tecnologico);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--negro);
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+        }
+
+        /* 4 Y 6. FORMULARIO SIMULADO Y BOTÓN INTERACTIVO */
+        .contact-section {
+            background-color: var(--blanco);
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--gris-borde);
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--gris-claro);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--gris-borde);
+        }
+
+        .form-container h2 {
+            margin-bottom: 1.5rem;
+            color: var(--negro);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: var(--negro);
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--gris-borde);
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: var(--blanco);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--azul-tecnologico);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background-color: var(--azul-tecnologico);
+            color: var(--blanco);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0369a1;
+        }
+
+        /* Contenedor para el mensaje de confirmación controlado por JS */
+        .message-box {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--verde-neon);
+            color: #065f46;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* 7. PIE DE PÁGINA */
+        footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 3rem 2rem 1.5rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-content h4 {
+            color: var(--verde-neon);
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-content p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--azul-oscuro);
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* DISEÑO RESPONSIVO (MEDIA QUERIES) */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">Diabet <span>farm</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Atención <span>Farmacéutica</span></h1>
+            <p>Monitoreo de glicemia, dispensación segura de medicamentos de venta libre y bajo fórmula médica, y atención especializada para pacientes diabéticos.</p>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2 class="services-title">Servicios Especializados</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>Control de Glicemia y Control Farmacéutico</h3>
+                <p>Monitoreo continuo de glucosa e interacción farmacológica. Dispensación garantizada de medicamentos e insumos de venta libre y bajo fórmula médica.</p>
+            </div>
+            <div class="card">
+                <h3>Atención Domiciliaria</h3>
+                <p>Entrega programada de medicamentos e insulinas conservando la cadena de frío directamente en la puerta de tu hogar.</p>
+            </div>
+            <div class="card">
+                <h3>Atención Personalizada y Seguimiento</h3>
+                <p>Planes de seguimiento farmacéutico individualizados para garantizar la adherencia al tratamiento y el control glicémico.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <div class="form-container">
+            <h2>Solicitar Información</h2>
+            <form id="infoForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" placeholder="Ingrese su nombre completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico *</label>
+                    <input type="email" id="correo" placeholder="correo@ejemplo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="plan">Plan de Interés</label>
+                    <select id="plan">
+                        <option value="control">Plan Control de Glicemia</option>
+                        <option value="domicilio">Plan Atención Domiciliaria</option>
+                        <option value="seguimiento">Plan Seguimiento Personalizado</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </form>
+
+            <div id="confirmationMessage" class="message-box"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Diabet farm</h4>
+                <p>Tecnología y precisión al servicio de tu control glicémico.</p>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <p>Teléfono: +57 (601) 555-0199</p>
+                <p>WhatsApp: +57 300 123 4567</p>
+                <p>Email: contacto@diabetfarm.com</p>
+            </div>
+            <div>
+                <h4>Ubicación</h4>
+                <p>Calle Principal #123 - Centro Salud</p>
+                <p>Horario: Lun a Sáb 7:00 AM - 8:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Diabet farm. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Escuchar el evento cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Referencias a los elementos de la interfaz
+            const form = document.getElementById('infoForm');
+            const nombreInput = document.getElementById('nombre');
+            const correoInput = document.getElementById('correo');
+            const messageBox = document.getElementById('confirmationMessage');
+
+            // Escuchar el envío del formulario
+            form.addEventListener('submit', (event) => {
+                // Prevenir el comportamiento por defecto (recargar la página)
+                event.preventDefault();
+
+                // Eliminar espacios vacíos de los valores
+                const nombreVal = nombreInput.value.trim();
+                const correoVal = correoInput.value.trim();
+
+                // Validación de campos requeridos
+                if (nombreVal === '' || correoVal === '') {
+                    // Mostrar alerta si los campos están vacíos
+                    alert('Por favor, completa los campos requeridos: Nombre y Correo electrónico.');
+                    messageBox.style.display = 'none';
+                } else {
+                    // Mostrar mensaje de confirmación en pantalla si la información está completa
+                    messageBox.textContent = 'Solicitud enviada correctamente. Un asesor se comunicará contigo.';
+                    messageBox.style.display = 'block';
+
+                    // Limpiar el formulario
+                    form.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
